@@ -28,9 +28,9 @@ const fetchRecipes = (dispatch) => async () => {
 };
 
 const saveRecipe = (dispatch) => async (name, recipeId) => {
-  console.log('yeetpre');
+  // console.log('testPre');
   await onlineApi.post('/recipes', { name, recipeId });
-  console.log('yeetpost');
+  // console.log('testPost');
 };
 
 export const { Provider, Context } = createDataContext(
