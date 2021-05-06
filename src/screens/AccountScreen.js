@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 import Spacing from '../components/Spacing';
 import { Context as AuthContext } from '../context/AuthContext';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const AccountScreen = () => {
   const { signout } = useContext(AuthContext);
@@ -18,7 +19,10 @@ const AccountScreen = () => {
   );
 };
 
-AccountScreen.navigationOptions = { title: 'Account' };
+AccountScreen.navigationOptions = {
+  title: 'Account',
+  tabBarIcon: <MaterialCommunityIcons name="account" size={30} />,
+};
 
 const styles = StyleSheet.create({
   containerStyle: {
