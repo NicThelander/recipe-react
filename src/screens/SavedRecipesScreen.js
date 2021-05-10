@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   Text,
   View,
@@ -9,10 +9,17 @@ import {
 import { NavigationEvents } from 'react-navigation';
 import { ListItem } from 'react-native-elements';
 import { Context as RecipeContext } from '../context/RecipeContext';
+import { MaterialIcons } from '@expo/vector-icons';
+import useDeleteRecipe from '../hooks/useDeleteRecipe';
 
 const SavedRecipesScreen = ({ navigation }) => {
   const { state, fetchRecipes } = useContext(RecipeContext);
-  // console.log(state);
+
+  const [removeRecipe] = useDeleteRecipe();
+
+  // useEffect(async () => {
+  //   await fetchRecipes();
+  // }, []);
 
   return (
     <View style={styles.containerStyle}>
@@ -30,10 +37,19 @@ const SavedRecipesScreen = ({ navigation }) => {
                   navigation.navigate('Recipe', { id: item.recipeId })
                 }
               >
-                <ListItem>
+                <ListItem style={styles.listItemStyle}>
                   <ListItem.Content>
                     <ListItem.Title>{item.name}</ListItem.Title>
+                    <TouchableOpacity
+                      onPress={() => {
+                        removeRecipe(item.recipeId);
+                        fetchRecipes();
+                      }}
+                    >
+                      <MaterialIcons name="delete" size={25} />
+                    </TouchableOpacity>
                   </ListItem.Content>
+
                   <ListItem.Chevron />
                 </ListItem>
               </TouchableOpacity>
@@ -50,7 +66,11 @@ SavedRecipesScreen.navigationOptions = {
 };
 const styles = StyleSheet.create({
   containerStyle: {
-    marginTop: 100,
+    flex: 1,
+  },
+  listItemStyle: {
+    borderBottomWidth: 1,
+    borderColor: 'rgb(169,169,169)',
   },
 });
 

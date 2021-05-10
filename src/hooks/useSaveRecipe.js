@@ -9,9 +9,7 @@ export default () => {
   } = useContext(RecipeContext);
 
   const addRecipe = async () => {
-    console.log(name), console.log(recipeId);
     await saveRecipe(name, recipeId);
-    console.log('yum');
     navigate('Recipe');
   };
 

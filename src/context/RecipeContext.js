@@ -28,13 +28,15 @@ const fetchRecipes = (dispatch) => async () => {
 };
 
 const saveRecipe = (dispatch) => async (name, recipeId) => {
-  // console.log('testPre');
   await onlineApi.post('/recipes', { name, recipeId });
-  // console.log('testPost');
+};
+
+const deleteRecipe = (dispatch) => async (recipeId) => {
+  await onlineApi.post('/recipes/delete', { recipeId });
 };
 
 export const { Provider, Context } = createDataContext(
   recipeReducer,
-  { fetchRecipes, saveRecipe, addRecipeId, addName },
+  { fetchRecipes, saveRecipe, addRecipeId, addName, deleteRecipe },
   []
 );

@@ -1,19 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import ResultDetails from './ResultDetails';
 
 const ResultsList = ({ results, navigation }) => {
-  // if (!results.length) {
-  //   return null;
-  // }
-
   return (
     <View style={styles.containerStyle}>
       <FlatList

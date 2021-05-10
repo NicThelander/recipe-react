@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
-import { Input } from 'react-native-elements/dist/input/Input';
 import spoonacular from '../api/spoonacular';
 import Spacing from '../components/Spacing';
 import { Context as RecipeContext } from '../context/RecipeContext';
