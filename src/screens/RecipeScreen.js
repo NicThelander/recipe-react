@@ -31,7 +31,7 @@ const RecipeScreen = ({ navigation }) => {
     setLoading(true);
 
     const response = await spoonacular.get(
-      `${id}/information?${API_KEY1}&includeNutrition=false` // might need &include not ?include
+      `${id}/information?${API_KEY2}&includeNutrition=false` // might need &include not ?include
     );
     await setResult(response.data);
     addRecipeId(id);

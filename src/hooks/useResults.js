@@ -10,7 +10,7 @@ export default () => {
   const API_KEY3 = 'apiKey=8f025297f1454a169b5c66c3d46a2ab6';
   const searchApi = async (searchTerm) => {
     // offsetVal = offset;
-    searchVal = `complexSearch?${API_KEY1}&query=${searchTerm}&number=8`;
+    searchVal = `complexSearch?${API_KEY2}&query=${searchTerm}&number=8`;
     try {
       const response = await spoonacular.get(searchVal);
       setResults(response.data);

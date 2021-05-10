@@ -9,8 +9,13 @@ export default () => {
   } = useContext(RecipeContext);
 
   const addRecipe = async () => {
-    await saveRecipe(name, recipeId);
-    navigate('Recipe');
+    // adds the recipe to saved recipes as long as it isn't already present
+    try {
+      await saveRecipe(name, recipeId);
+    } catch (err) {
+      console.log(err);
+    }
+    navigate('SavedRecipes');
   };
 
   return [addRecipe];
