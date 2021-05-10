@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults';
 import Spacing from '../components/Spacing';
@@ -19,39 +25,44 @@ const HomeScreen = () => {
           onTermSubmit={() => searchApi(`${term}&offset=${offset}`)}
         />
       </Spacing>
-      {errorMessage ? <Text>{errorMessage}</Text> : null}
+      {errorMessage ? (
+        <Spacing>
+          <Text>{errorMessage}</Text>
+        </Spacing>
+      ) : null}
       <View style={styles.listSpacing}>
         <ResultsList style={styles.listStyle} results={results.results} />
       </View>
-      <TouchableOpacity
-        style={styles.backButtonStyle}
-        onPress={() => {
-          const tempOffset = offset - 8 >= 0 ? offset - 8 : 0;
-          searchApi(`${term}&offset=${tempOffset}`);
-          setOffset(tempOffset);
-        }}
-        //onPressOut={() => searchApi(`${term}&offset=${offset}`)}
-      >
-        <Text style={{ fontSize: 20 }}>back</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.nextButtonStyle}
-        onPress={() => {
-          const tempOffset = offset + 8 < 92 ? offset + 8 : 92;
-          searchApi(`${term}&offset=${tempOffset}`);
-          setOffset(tempOffset);
-        }}
-      >
-        <Text style={{ fontSize: 20 }}>next</Text>
-      </TouchableOpacity>
+      <KeyboardAvoidingView>
+        <TouchableOpacity
+          style={styles.backButtonStyle}
+          onPress={() => {
+            const tempOffset = offset - 8 >= 0 ? offset - 8 : 0;
+            searchApi(`${term}&offset=${tempOffset}`);
+            setOffset(tempOffset);
+          }}
+        >
+          <Text style={{ fontSize: 20 }}>back</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+      <KeyboardAvoidingView>
+        <TouchableOpacity
+          style={styles.nextButtonStyle}
+          onPress={() => {
+            const tempOffset = offset + 8 < 92 ? offset + 8 : 92;
+            searchApi(`${term}&offset=${tempOffset}`);
+            setOffset(tempOffset);
+          }}
+        >
+          <Text style={{ fontSize: 20 }}>next</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-  },
+  containerStyle: {},
   listSpacing: {
     marginLeft: 15,
   },
@@ -66,7 +77,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 2,
     position: 'absolute',
-    bottom: 5,
+    bottom: 69,
     left: 25,
   },
   nextButtonStyle: {
@@ -76,7 +87,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 2,
     position: 'absolute',
-    bottom: 5,
+    bottom: 69,
     right: 25,
   },
 });
