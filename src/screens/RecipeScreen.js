@@ -1,5 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import {
+  ActivityIndicator,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from 'react-native';
 import { Button } from 'react-native-elements';
 import spoonacular from '../api/spoonacular';
 import Spacing from '../components/Spacing';
@@ -99,7 +106,7 @@ const RecipeScreen = ({ navigation }) => {
           </Spacing>
         </ScrollView>
       ) : (
-        <Text>Loading</Text>
+        <ActivityIndicator animating={true} size={75} color="#5b5b5b" />
       )}
     </View>
   );
@@ -119,6 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   containerStyle: {
+    justifyContent: 'center',
     flex: 1,
     marginTop: 30,
   },

@@ -12,8 +12,7 @@ import RecipeScreen from './src/screens/RecipeScreen';
 import SavedRecipesScreen from './src/screens/SavedRecipesScreen';
 import AccountScreen from './src/screens/AccountScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
-import { FontAwesome } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
 const homeFlow = createStackNavigator({
   Home: HomeScreen,

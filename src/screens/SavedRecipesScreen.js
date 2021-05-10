@@ -15,14 +15,8 @@ import useDeleteRecipe from '../hooks/useDeleteRecipe';
 
 // screen to see the recipes users have saved to their account
 
-if (Platform.OS === 'android') {
-  if (!ActivityIndicator.defaultProps) ActivityIndicator.defaultProps = {};
-  ActivityIndicator.defaultProps.color = 'gray';
-} // there's currently a bug where the colour defaults to null on android so this is required to see the loading circle
-
 const SavedRecipesScreen = ({ navigation }) => {
   const { state, fetchRecipes } = useContext(RecipeContext);
-  console.log(state);
 
   const [removeRecipe] = useDeleteRecipe();
 
@@ -30,7 +24,7 @@ const SavedRecipesScreen = ({ navigation }) => {
     <View style={styles.containerStyle}>
       <NavigationEvents onWillFocus={() => fetchRecipes()} />
       {state.length === 0 || state.length === undefined ? (
-        <ActivityIndicator animating={true} size="large" color="gray" />
+        <ActivityIndicator animating={true} size={75} color="#5b5b5b" />
       ) : (
         // The array becomes undefined as you leave the page and it causes an error, this deals with that and gives a loading image for when you enter the page
         <FlatList

@@ -45,7 +45,6 @@ const signup = (dispatch) => {
         type: 'add_error',
         payload: 'Something went wrong during signup',
       });
-      //   console.log(err);
     }
   };
 };
